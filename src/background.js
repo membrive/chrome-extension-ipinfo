@@ -5,7 +5,7 @@ const MENU_ID = "open-selection-in-ipinfo";
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: MENU_ID,
-    title: "Open IP address in ipinfo.io",
+    title: "Open IP in ipinfo.io",
     contexts: ["selection"]
   });
 });

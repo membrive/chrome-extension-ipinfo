@@ -6,7 +6,7 @@ This project is independently developed and is not affiliated with, endorsed by,
 
 ## What It Does
 
-- Adds an **Open IP address in ipinfo.io** item to Chrome's context menu when text is selected.
+- Adds an **Open IP in ipinfo.io** item to Chrome's context menu when text is selected.
 - Validates the selected text as an IPv4 or IPv6 address before opening a new tab.
 - Opens `https://ipinfo.io/IP-ADDRESS` for valid selections.
 - Does nothing for invalid, empty, partial, or multi-word selections.
@@ -59,7 +59,7 @@ https://ipinfo.io/8.8.8.8
 
 1. Highlight a valid IP address on any web page.
 2. Right-click the highlighted text.
-3. Click **Open IP address in ipinfo.io**.
+3. Click **Open IP in ipinfo.io**.
 4. Chrome opens a new tab with the IP address details on ipinfo.io.
 
 ## Development
