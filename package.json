@@ -1,0 +1,19 @@
+{
+  "name": "chrome-extension-ipinfo",
+  "version": "1.0.0",
+  "description": "Chrome extension that opens selected IP addresses in ipinfo.io.",
+  "private": true,
+  "author": "Fernando Membrive Guillén",
+  "homepage": "https://membrive.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/membrive/chrome-extension-ipinfo.git"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
