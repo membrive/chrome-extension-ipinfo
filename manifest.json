@@ -5,7 +5,9 @@
   "version": "1.0.0",
   "minimum_chrome_version": "110",
   "permissions": [
-    "contextMenus"
+    "activeTab",
+    "contextMenus",
+    "scripting"
   ],
   "background": {
     "service_worker": "src/background.js",

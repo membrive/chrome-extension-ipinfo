@@ -9,8 +9,9 @@ This project is independently developed and is not affiliated with, endorsed by,
 - Adds an **Open IP in ipinfo.io** item to Chrome's context menu when text is selected.
 - Validates the selected text as an IPv4 or IPv6 address before opening a new tab.
 - Opens `https://ipinfo.io/IP-ADDRESS` for valid selections.
-- Does nothing for invalid, empty, partial, or multi-word selections.
-- Runs locally in your browser. It does not collect, store, or transmit data anywhere except the ipinfo.io tab you explicitly open.
+- Shows a temporary in-page message for invalid, empty, partial, or multi-word selections.
+- Runs locally in your browser. The extension does not collect, store, track, or transmit user information.
+- Opens ipinfo.io only when you explicitly select a valid IP address and click the context menu item.
 
 ## Supported IP Address Formats
 
@@ -62,6 +63,8 @@ https://ipinfo.io/8.8.8.8
 3. Click **Open IP in ipinfo.io**.
 4. Chrome opens a new tab with the IP address details on ipinfo.io.
 
+If the selection is not a valid IP address, the extension shows a temporary message on the current page instead.
+
 ## Development
 
 This extension uses Manifest V3 and has no build step or runtime dependencies.
@@ -76,11 +79,25 @@ After changing extension files, reload the extension from `chrome://extensions` 
 
 ## Permissions
 
-The extension requests only:
+The extension's `manifest.json` `permissions` array contains exactly these permissions:
 
-- `contextMenus`: required to add the right-click menu item for selected text.
+```json
+[
+  "activeTab",
+  "contextMenus",
+  "scripting"
+]
+```
 
-It does not request broad host permissions, page access, browsing history, cookies, storage, or clipboard permissions.
+Why each permission is needed:
+
+- `activeTab`: gives the extension temporary access to the current tab only after you click the context menu item. This access is used only when the selected text is invalid, so the extension can show the in-page toast message on that page.
+- `contextMenus`: adds the **Open IP in ipinfo.io** item to Chrome's right-click menu when text is selected.
+- `scripting`: lets the extension inject the temporary invalid-selection toast into the current tab. This is what makes the toast notification work.
+
+The extension does not request broad host permissions, browsing history, cookies, storage, clipboard access, or background access to web pages. It does not track user activity, selections, visited pages, or IP lookups.
+
+When a valid IP address is opened, Chrome loads `https://ipinfo.io/IP-ADDRESS` in a new tab. IPinfo is an independent third-party service and is not affiliated with this project. IPinfo may receive and process the requested IP address, your browser request metadata, and your activity on ipinfo.io according to its own policies.
 
 ## Packaging
 
