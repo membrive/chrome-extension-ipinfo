@@ -79,32 +79,12 @@ After changing extension files, reload the extension from `chrome://extensions` 
 
 ## Permissions
 
-The extension's `manifest.json` `permissions` array contains exactly these permissions:
-
-```json
-[
-  "activeTab",
-  "contextMenus",
-  "scripting"
-]
-```
-
-Why each permission is needed:
+The permissions needed by this application are:
 
 - `activeTab`: gives the extension temporary access to the current tab only after you click the context menu item. This access is used only when the selected text is invalid, so the extension can show the in-page toast message on that page.
 - `contextMenus`: adds the **Open IP in ipinfo.io** item to Chrome's right-click menu when text is selected.
 - `scripting`: lets the extension inject the temporary invalid-selection toast into the current tab. This is what makes the toast notification work.
 
-The extension does not request broad host permissions, browsing history, cookies, storage, clipboard access, or background access to web pages. It does not track user activity, selections, visited pages, or IP lookups.
+This extension does not track user activity, selections, visited pages, or IP lookups.
 
 When a valid IP address is opened, Chrome loads `https://ipinfo.io/IP-ADDRESS` in a new tab. IPinfo is an independent third-party service and is not affiliated with this project. IPinfo may receive and process the requested IP address, your browser request metadata, and your activity on ipinfo.io according to its own policies.
-
-## Packaging
-
-To distribute the extension manually, zip the extension files:
-
-```bash
-zip -r chrome-extension-ipinfo.zip manifest.json src README.md package.json test .gitignore
-```
-
-For Chrome Web Store distribution, create a ZIP that includes the extension files and follow Google's Chrome Web Store publishing process.
